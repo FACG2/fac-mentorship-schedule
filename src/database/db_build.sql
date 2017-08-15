@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS cohorts  (
 );
 
 
-INSERT INTO cohorts (location ,num,start_date) VALUES        ('London',10,'25-Nov-2017'),
+INSERT INTO cohorts (location ,num,start_date) VALUES ('London',10,'25-Nov-2017'),
 ('Gaza',1,'25-Nov-2017'),
 ('Nazareth',2,'09-July-2017'),
 ('Gaza',2,'09-July-2017');
