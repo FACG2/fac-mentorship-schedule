@@ -1,27 +1,17 @@
 const {Pool} = require('pg');
-const url = require('url');
-
-const env = require('env2');
-env('./config.env');
+require('env2')('./config.env');
+var data_url;
 
 if (!process.env.DATABASE_URL) {
-  throw new Error('Environment variable DATABASE_URL must be set');
+  throw new Error('No DATABASE_URL provided');
 }
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV == 'test'){
+  data_url = process.env.TEST_URL;
+} else {
+  data_url = process.env.DATABASE_URL;
+}
+console.log(data_url);
+const pool = new Pool({connectionString: data_url});
 
-const params = url.parse(process.env.DATABASE_URL);
-
-const [username, password] = params.auth.split(':');
-
-const options = {
-  host: params.hostname,
-  port: params.port,
-  database: params.pathname.split('/')[1],
-  max: process.env.DB_MAX_CONNECTIONS || 2
-};
-
-if (username) { options.user = username; }
-if (password) { options.password = password; }
-
-options.ssl = (options.host !== 'localhost');
-
-module.exports = new Pool(options);
+module.exports = pool;
