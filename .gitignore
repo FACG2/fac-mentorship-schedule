@@ -42,6 +42,7 @@ typings/
 # Optional npm cache directory
 .npm
 
+#
 # Optional eslint cache
 .eslintcache
 
@@ -55,5 +56,5 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+config.env
 
