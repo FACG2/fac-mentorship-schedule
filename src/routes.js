@@ -7,7 +7,7 @@ function router(req, res) {
   } else if (url === '/create-cohort') {
     handler.createCohortHandler(req,res);
   } else if (url === '/add-mentor') {
-
+    handler.createNewMentor(req,res);
   } else if (url === '/cohorts') {
     handler.viewCohortsHandler(req,res);
 

@@ -60,6 +60,30 @@ req.on('error', function() {
 })
 
 }
+
+
+function createNewMentor(req,res){
+var allData='';
+req.on('data', function(chunk){
+  allData += chunk;
+});
+req.on('end', function(){
+  var obj = querystring.parse(allData);
+  var result = dbFunctions.addMenetor(obj,(err, response)=>{
+    if (err) {
+      res.writeHead(500,{'Content-Type' : 'text/html'});
+    }else{
+      res.writeHead(302,{'Location':'/'});
+      res.end()
+    }
+  });
+});
+req.on('error',()=>{
+  res.end("Can't create a new mentoer");
+})
+}
+
+
 function viewWeeksHandler(req,res) {
     var url = req.url;
   var resu = url.split("?");
@@ -107,5 +131,6 @@ module.exports = {
   noPageHandler,
   createCohortHandler,
   viewWeeksHandler,
+  createNewMentor,
   viewCohortsHandler
 }
