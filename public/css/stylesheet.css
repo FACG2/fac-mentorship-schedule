@@ -72,6 +72,46 @@ body {
 
 }
 
+#account{
+  text-align: center;
+    width: 188px;
+    height: 32px;
+    margin-top: 18px;
+    background-color: #2B2D42;
+    border: 1px solid #2B2D42;
+    color: white;
+    font-size: 0.8rem;
+}
+
+#week-number{
+
+    text-align: center;
+    width: 88px;
+    height: 36px;
+    margin-top: 18px;
+    background-color: #2B2D42;
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+    border-left: 1px solid;
+}
+
+#add-mentor{
+  width: 50px;
+    height: 36px;
+    margin-top: 18px;
+    background-color: #2B2D42;
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+    border-left: 1px solid #fff;
+}
+
+.addmentor{
+  font-size: 0;
+    margin-bottom: 50px
+}
+
 #Add-Cohorts{
   width: 13%;
     height: 33px;
@@ -157,7 +197,8 @@ th {
     width: 50%;
     margin: 0 auto;
     text-align: center;
-    color: #2B2D42
+    color: #2B2D42;
+    margin-top:50px;
 }
 #weeks-mentor-table{
       background-color: #ddd;
