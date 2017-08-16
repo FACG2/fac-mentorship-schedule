@@ -37,10 +37,10 @@
 
 				<div class="addcohort-container">
 					<label for="cohort" class="addCohort-label ">Add Cohort</label>
-					<form class="Add-Cohorts-Form" action="/creat-cohort" method="post">
-						<input type="text" value="" name="Location" placeholder="Location" required>
-						<input type="text" value="" name="Number" placeholder="Number" required>
-						<input type="text" value="" placeholder="Start Date" required>
+					<form class="Add-Cohorts-Form" action="/create-cohort" method="post">
+						<input type="text" value="" name="location" placeholder="Location" required>
+						<input type="text" value="" name="num" placeholder="Number" required>
+						<input type="text" value="" name="start_date" placeholder="Start Date" required>
 						<button id="" type="submit" name="">Add</button>
 					</form>
 				</div>
@@ -54,8 +54,14 @@
 						</tr>
 					</table>
 				</div>
-
-				<script type="text/javascript" src="./request.js"></script>
+				<form class="addmentor" action="/add-mentor" method="post">
+					<input type="text" value="" name="cohort_id" placeholder="id" required>
+					<input type="text" value="" name="mentor_user" placeholder="username" required>
+					<input type="text" value="" name="week_num" placeholder="weekNum" required>
+					<button id="" type="submit" name="">Add</button>
+				</form>
+				<script src="public/js/request.js"></script>
+			  <script src="public/js/index.js"></script>
 </body>
 
 </html>
