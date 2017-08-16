@@ -14,20 +14,20 @@ const getData = (cohort,cb) => {
 
 const weeksMentors = (cohort,cb) =>{
   var weeks = {
-    1:[],
-    2:[],
-    3:[],
-    4:[],
-    5:[],
-    6:[],
-    7:[],
-    8:[],
-    10:[],
-    11:[],
-    13:[],
-    14:[],
-    15:[],
-    16:[],
+    1:{mentors:[]},
+    2:{mentors:[]},
+    3:{mentors:[]},
+    4:{mentors:[]},
+    5:{mentors:[]},
+    6:{mentors:[]},
+    7:{mentors:[]},
+    8:{mentors:[]},
+    10:{mentors:[]},
+    11:{mentors:[]},
+    13:{mentors:[]},
+    14:{mentors:[]},
+    15:{mentors:[]},
+    16:{mentors:[]},
   }
   getData(cohort,(err,res)=>{
     if(err){
@@ -35,7 +35,8 @@ const weeksMentors = (cohort,cb) =>{
     } else {
 
        res.map((object,i)=>{
-        return weeks[object.num].push(object.githubuser)
+        weeks[object.num].mentors.push(object.githubuser);
+        weeks[object.num]['title'] = object.week_title
       })
       cb(null,weeks);
     }
