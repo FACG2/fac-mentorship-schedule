@@ -37,7 +37,6 @@ viewButton.onclick = (e) => {
     weekNumber.value = '1'
     post('/add-mentor',data,(response)=>{
       updateTable(url);
-      console.log('what?');
     })
   }
 }
@@ -74,7 +73,7 @@ function updateTable(url){
       cell1.innerHTML = `week${week}`;
       cell2.innerHTML = weekTitles[i];
       response[week].mentors.forEach((mentor)=>{
-      cell3.innerHTML+= `<a href=https://github.com/${mentor}> ${mentor} </a> <br>`  
+      cell3.innerHTML+= `<a href=https://github.com/${mentor}> ${mentor} </a> <br>`
       })
 
 
