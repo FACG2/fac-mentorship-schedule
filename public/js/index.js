@@ -22,3 +22,7 @@
 get('/weeks?cohort=2',(response)=>{
   console.log(response);
 })
+
+get('/cohorts',(response)=>{
+  console.log(response);
+})

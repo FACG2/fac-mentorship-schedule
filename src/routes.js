@@ -9,6 +9,7 @@ function router(req, res) {
   } else if (url === '/add-mentor') {
 
   } else if (url === '/cohorts') {
+    handler.viewCohortsHandler(req,res);
 
   } else if (url.startsWith('/weeks') ) {
     handler.viewWeeksHandler(req,res);
