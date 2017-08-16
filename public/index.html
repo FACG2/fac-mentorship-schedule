@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<title> FAC Mentorship schedule</title>
+	<link rel="stylesheet" href="./css/stylesheet.css" class="css">
+
 </head>
-<body><!-- 
-	<form id="Cohorts-Form" action="">
-        <input id="" placeholder="" type="text" name="" value="" required>
-        <button id="" type="submit" name="">Veiw</button>
-        <button id="" type="submit" name="">add</button>
-	</form> -->
 
-	<form id="Add-Cohorts-Form" action="/creat-cohort" method="post">
-        <input id="location" placeholder="Location" type="text" name="" required>
-        <input id="number" placeholder="Number" type="text" name="" required>
-        <input id="Start-Date" placeholder="Start Date" type="text" value="" required>
+<body>
 
-        <button id="" type="submit" name="">Veiw</button>
-	</form>
+	<nav>
+		<div class="nav">
+			<a href="#" class="brand">FAC Mentorship schedule</a>
+		</div>
+	</nav>
+
+
+	<section class="cohort-form">
+		<div class="cohort-form-opacity-layer">
+			<article class="form-container">
+				<select class="cohort-form-input" id="CohortName" placeholder="Your Cohort" name="name">
+						<option value=''>Select Your Cohort</option>
+            <option value='FAC10'>FAC10</option>
+            <option value='FAC11'>FAC11</option>
+            <option value='FACG1'>FACG1</option>
+            <option value='FACG2'>FACG2</option>
+            <option value='FACN1'>FACN1</option>
+            <option value='FACN2'>FACN2</option>
+          </select>
+
+
+				<button id="" class="cohort-form-submit" type="submit" name="">Add Cohort</button>
+				<button id="" class="cohort-form-submit" type="submit" name="">View Cohort</button>
+
+
+				<div class="addcohort-container">
+					<label for="cohort" class="addCohort-label ">Add Cohort</label>
+					<form class="Add-Cohorts-Form" action="/creat-cohort" method="post">
+						<input type="text" value="" name="Location" placeholder="Location" required>
+						<input type="text" value="" name="Number" placeholder="Number" required>
+						<input type="text" value="" placeholder="Start Date" required>
+						<button id="" type="submit" name="">Add</button>
+					</form>
+				</div>
+
+				<div class="table-container">
+					<table id="weeks-mentor-table">
+						<tr>
+							<th>Weeks</th>
+							<th>Title</th>
+							<th>Mentor</th>
+						</tr>
+					</table>
+				</div>
+
+				<script type="text/javascript" src="./request.js"></script>
 </body>
+
 </html>
