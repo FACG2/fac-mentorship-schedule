@@ -72,7 +72,9 @@ CREATE TABLE IF NOT EXISTS cohort_mentor (
 INSERT INTO   cohort_mentor (cohort_id ,mentor_user ,week_num) VALUES
 (2,'Ali',2),
 (1,'Zooey',5),
-(2,'Abdallah',7);
+(2,'Abdallah',7),
+(2,'Mahmud',7);
+
 
 
 
