@@ -11,7 +11,7 @@ test('get 16 weeks of selected cohort', (t) => {
     }else{
     var actual = res[0];
     var expected = { num: 5, week_title: 'Node.js 2/2', githubuser: 'Zooey' };
-// {weeks.num , weeks.week_title ,mentors.githubuser}
+
     t.deepEqual(actual, expected, 'should return an 16 weeks of selected cohort');
     t.end();
   }
@@ -42,3 +42,20 @@ functions.addCohort(obj, (err,res)=>{
 		}
 	})
 	});
+
+
+	test('get  selected cohort', (t) => {
+		var obj={ id:'' ,location:'Gaza', num :2}
+
+		functions.getCohort(1, (err,res)=>{
+			if (err) {
+				console.log(err);
+			}else{
+		        var actual = res[0];
+		        var expected =  {facg2 }
+						t.deepEqual(actual, expected,'should return selected cohort')
+						t.end();
+					}
+					})
+
+				});

@@ -2,13 +2,7 @@ const dbConnection = require('../database/db_connection.js');
 
 
 const getData = (cohort,cb) => {
-  // var location ='';
-  // var num ='';
-  // var c = cohort.toLowerCase().split('c');
-  // if(c[1]= startsWith('g') ){
-  //   var g = cohort.toLowerCase().split('g');
-  //   return { location : 'Gaza' ,  num : g[1]}
-  // }
+
 
   dbConnection.query(`SELECT weeks.num , weeks.week_title , mentors.githubuser from weeks inner join cohort_mentor on weeks.num = cohort_mentor.week_num inner join mentors on mentors.githubuser = cohort_mentor.mentor_user  where  cohort_mentor.cohort_id  = ${cohort}`, (err, res) => {
     if (err) {
@@ -38,4 +32,24 @@ const getData = (cohort,cb) => {
  		}
  	})
  }
-module.exports = {getData ,addCohort, testInsert};
+
+
+ const getCohort = (cohort,cb) => {
+
+    var location ='';
+    var num ='';
+    cohort ='fac';
+    var c = cohort.toLowerCase().split('c[1]');
+    console.log(c);
+  
+
+   dbConnection.query(`SELECT id ,location ,num from cohorts where  id = '${cohort.id}' and location='${cohort.location}' and num ='${cohort.num}'` ,(err, res)=>{
+     if(err){
+       cb(err)
+     }else{
+       cb(null ,res.rows);
+     }
+
+   })
+ }
+module.exports = {getData ,addCohort, testInsert ,getCohort};
