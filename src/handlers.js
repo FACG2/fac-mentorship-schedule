@@ -113,11 +113,9 @@ function createNewMentor(req, res) {
         res.writeHead(500, {
           'Content-Type': 'text/html'
         });
+        res.end();
       } else {
-        res.writeHead(302, {
-          'Location': '/'
-        });
-        res.end()
+        res.end(JSON.stringify(response));
       }
     });
   });
