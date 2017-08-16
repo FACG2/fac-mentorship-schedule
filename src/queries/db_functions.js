@@ -29,12 +29,13 @@ const weeksMentors = (cohort,cb) =>{
     15:{mentors:[]},
     16:{mentors:[]},
   }
-  getData(cohort,(err,res)=>{
-    if(err){
-      console.log(err);
-    } else {
 
-       res.map((object,i)=>{
+
+  getData(cohort,(err,res)=>{
+      if(err){
+        console.log(err);
+      } else {
+      res.map((object,i)=>{
         weeks[object.num].mentors.push(object.githubuser);
         weeks[object.num]['title'] = object.week_title
       })
@@ -129,5 +130,4 @@ const cohort_mentor = (obj,cb)=>{
    })
  }
 
-module.exports = {getData ,addCohort, testInsert,
-  weeksMentors,getCohort,getCohortNames,addMenetor};
+module.exports = {getData ,addCohort, testInsert,  weeksMentors,getCohort,getCohortNames,addMenetor};
