@@ -1,6 +1,7 @@
 const querystring = require('querystring');
 const fs = require('fs');
-const dbFunctions= require('./queries/db_functions.js')
+const dbFunctions = require('./queries/db_functions.js')
+
 function publicHandler(req, res) {
   var url = req.url;
   if (url == '/') {
@@ -30,72 +31,52 @@ function publicHandler(req, res) {
   });
 }
 
-function createCohortHandler(req,res) {
+function createCohortHandler(req, res) {
   var allData = '';
-req.on('data', function(chunk) {
-  allData += chunk;
-});
-req.on('end', function() {
+  req.on('data', function(chunk) {
+    allData += chunk;
+  });
+  req.on('end', function() {
 
-  var obj=querystring.parse(allData);
+    var obj = querystring.parse(allData);
     console.log(obj);
-  var  result = dbFunctions.addCohort(obj,(err,ress) =>{
+    var result = dbFunctions.addCohort(obj, (err, ress) => {
 
-    if (err) {
-      console.log(err);
-      res.writeHead(500, {
-        'Content-Type': 'text/html'
-      });
-      res.end('server error');
-    }else {
-      res.writeHead(302, {'Location': '/'});
+      if (err) {
+        console.log(err);
+        res.writeHead(500, {
+          'Content-Type': 'text/html'
+        });
+        res.end('server error');
+      } else {
+        res.writeHead(302, {
+          'Location': '/'
+        });
 
-      res.end();
-    }
+        res.end();
+      }
+    });
+
   });
-
-});
-req.on('error', function() {
-  res.end('connot create cohort');
-})
+  req.on('error', function() {
+    res.end('connot create cohort');
+  })
 
 }
 
-
-function createNewMentor(req,res){
-var allData='';
-req.on('data', function(chunk){
-  allData += chunk;
-});
-req.on('end', function(){
-  var obj = querystring.parse(allData);
-  var result = dbFunctions.addMenetor(obj,(err, response)=>{
-    if (err) {
-      res.writeHead(500,{'Content-Type' : 'text/html'});
-    }else{
-      res.writeHead(302,{'Location':'/'});
-      res.end()
-    }
-  });
-});
-req.on('error',()=>{
-  res.end("Can't create a new mentoer");
-})
-}
-
-
-function viewWeeksHandler(req,res) {
-    var url = req.url;
+function viewWeeksHandler(req, res) {
+  var url = req.url;
   var resu = url.split("?");
-    var obj=querystring.parse(resu[1]);
-  var  result = dbFunctions.weeksMentors(obj.cohort,(err,ress) =>{
+  var obj = querystring.parse(resu[1]);
+  var result = dbFunctions.weeksMentors(obj.cohort, (err, ress) => {
+
     if (err) {
       console.log(err);
       res.writeHead(500, {
         'Content-Type': 'text/html'
       });
       res.end('server error');
-    }else {
+    } else {
 
       res.end(JSON.stringify(ress));
     }
@@ -103,21 +84,46 @@ function viewWeeksHandler(req,res) {
 
 }
 
-function viewCohortsHandler(req,res) {
-  var  result = dbFunctions.getCohortNames((err,ress) =>{
+function viewCohortsHandler(req, res) {
+  var result = dbFunctions.getCohortNames((err, ress) => {
     if (err) {
       console.log(err);
       res.writeHead(500, {
         'Content-Type': 'text/html'
       });
       res.end('server error');
-    }else {
+    } else {
 
       res.end(JSON.stringify(ress));
     }
   });
+}
 
+function createNewMentor(req, res) {
+  var allData = '';
+  req.on('data', function(chunk) {
+    allData += chunk;
+  });
 
+  req.on('end', function() {
+    var obj = querystring.parse(allData);
+    console.log(obj);
+    var result = dbFunctions.addMenetor(obj, (err, response) => {
+      if (err) {
+        res.writeHead(500, {
+          'Content-Type': 'text/html'
+        });
+      } else {
+        res.writeHead(302, {
+          'Location': '/'
+        });
+        res.end()
+      }
+    });
+  });
+  req.on('error', () => {
+    res.end("Can't create a new mentoer");
+  })
 }
 
 function noPageHandler(req, res) {
@@ -131,6 +137,6 @@ module.exports = {
   noPageHandler,
   createCohortHandler,
   viewWeeksHandler,
-  createNewMentor,
-  viewCohortsHandler
+  viewCohortsHandler,
+  createNewMentor
 }

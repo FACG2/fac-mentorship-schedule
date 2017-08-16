@@ -62,7 +62,7 @@ INSERT INTO weeks (num ,week_title) VALUES (1 ,'Toolkit'),
 
 CREATE TABLE IF NOT EXISTS cohort_mentor (
     cohort_id  INTEGER  REFERENCES cohorts(id),
-    mentor_user VARCHAR(20) REFERENCES mentors(githubuser),
+    mentor_user VARCHAR REFERENCES mentors(githubuser),
     week_num   INTEGER  REFERENCES weeks(num),
     PRIMARY KEY (cohort_id,mentor_user,week_num)
 );
