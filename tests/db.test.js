@@ -79,18 +79,28 @@ functions.addCohort(obj, (err,res)=>{
 	});
 
 
-	test('get  selected cohort', (t) => {
-		var obj={ id:'' ,location:'Gaza', num :2}
-
-		functions.getCohort(1, (err,res)=>{
+	test('get all cohorts', (t) => {
+		functions.getCohort((err,res)=>{
 			if (err) {
 				console.log(err);
 			}else{
-		        var actual = res[0];
-		        var expected =  {facg2 }
+		        var actual = res;
+		        var expected =  [ { id: 1, location: 'London', num: 10 }, { id: 2, location: 'Gaza', num: 1 }, { id: 3, location: 'Nazareth', num: 2 }, { id: 4, location: 'Gaza', num: 2 }, { id: 5, location: 'Gaza', num: 2 }]
 						t.deepEqual(actual, expected,'should return selected cohort')
 						t.end();
 					}
 					})
-
 				});
+
+      test('get cohort names',(t)=>{
+        functions.getCohortNames((err,res)=>{
+          if(err){
+            console.log(err);
+          }else{
+            var actual = res;
+            var expected = [ 'FAC10', 'FACG1', 'FACN2', 'FACG2', 'FACG2' ];
+            t.deepEqual(actual,expected,'names should be in the correct form');
+            t.end();
+          }
+        })
+      })
