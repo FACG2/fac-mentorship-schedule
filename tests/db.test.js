@@ -8,6 +8,7 @@ test('get 16 weeks of selected cohort', (t) => {
   functions.getData(1, (err, res) => {
     if (err) {
       console.log(err);
+
     } else {
       var actual = res[0];
       var expected = {
@@ -54,31 +55,42 @@ test('return sevral mentors in one week', (t) => {
 
 
 test('Add new cohort', (t) => {
-  var obj = {
-    location: 'Gaza',
-    num: 2,
-    start_date: '01-01-2010'
-  }
 
-  functions.addCohort(obj, (err, res) => {
-    if (err) {
-      console.log(err);
-    } else {
+var obj={location:'Gaza',num:2,start_date:'01-01-2010'}
 
-      functions.testInsert(obj, (err, res) => {
-        if (err) {
-          console.log(err);
-        } else {
-          var actual = res[0];
-          var expected = {
-            'location': 'Gaza',
-            'num': 2
-          }
-          t.deepEqual(actual, expected, 'should return the inerted object')
-          t.end();
-        }
-      })
+functions.addCohort(obj, (err,res)=>{
+	if (err) {
+		console.log(err);
+	}else{
 
-    }
-  })
-});
+		functions.testInsert(obj,(err, res)=>{
+			if (err) {
+				console.log(err);
+			}else{
+        var actual = res[0];
+        var expected =  {'location': 'Gaza', 'num': 2}
+				t.deepEqual(actual, expected,'should return the inerted object')
+				t.end();
+			}
+			})
+
+		}
+	})
+	});
+
+
+	test('get  selected cohort', (t) => {
+		var obj={ id:'' ,location:'Gaza', num :2}
+
+		functions.getCohort(1, (err,res)=>{
+			if (err) {
+				console.log(err);
+			}else{
+		        var actual = res[0];
+		        var expected =  {facg2 }
+						t.deepEqual(actual, expected,'should return selected cohort')
+						t.end();
+					}
+					})
+
+				});
