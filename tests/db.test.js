@@ -9,9 +9,9 @@ test('get 16 weeks of selected cohort', (t) => {
     if (err){
       console.log(err);
     }else{
-    var actual = res;
-    var expected = ['week1','week2','week3','week4','week5','week6','week7','week8','week10','week11','week12'];
-
+    var actual = res[0];
+    var expected = { num: 5, week_title: 'Node.js 2/2', githubuser: 'Zooey' };
+// {weeks.num , weeks.week_title ,mentors.githubuser}
     t.deepEqual(actual, expected, 'should return an 16 weeks of selected cohort');
     t.end();
   }
