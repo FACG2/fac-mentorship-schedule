@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title> FAC Mentorship schedule</title>
-	<link rel="stylesheet" href="./css/stylesheet.css" class="css">
+	<link rel="stylesheet" href="public/css/stylesheet.css" class="css">
 
 </head>
 
@@ -47,13 +47,15 @@
 
 				<div class="table-container">
 					<table id="weeks-mentor-table">
-						<tr>
-							<th>Weeks</th>
-							<th>Title</th>
-							<th>Mentor</th>
-						</tr>
+						
 					</table>
 				</div>
+				<form class="addmentor" action="/add-mentor" method="post">
+					<input type="text" value="" name="cohort_id" placeholder="id" required>
+					<input type="text" value="" name="mentor_user" placeholder="username" required>
+					<input type="text" value="" name="week_num" placeholder="weekNum" required>
+					<button id="" type="submit" name="">Add</button>
+				</form>
 				<script src="public/js/request.js"></script>
 			  <script src="public/js/index.js"></script>
 </body>
