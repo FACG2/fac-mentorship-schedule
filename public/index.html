@@ -21,20 +21,23 @@
 		<div class="cohort-form-opacity-layer">
 			<article class="form-container">
 				<select class="cohort-form-input" id="CohortName" placeholder="Your Cohort" name="name">
-						</select>
+	
+            
+          </select>
 
-
+				<div class="cohorts-Buttons">
 				<button id="add" class="cohort-form-submit" type="submit" name="">Add Cohort</button>
 				<button id="view" class="cohort-form-submit" type="submit" name="">View Cohort</button>
+				</div>
 
 
 				<div class="addcohort-container" style='display:none'>
 					<label for="cohort" class="addCohort-label ">Add Cohort</label>
 					<form class="Add-Cohorts-Form" action="/create-cohort" method="post">
-						<input type="text" value="" name="location" placeholder="Location" required>
-						<input type="text" value="" name="num" placeholder="Number" required>
-						<input type="text" value="" name="start_date" placeholder="Start Date" required>
-						<button id="" type="submit" name="">Add</button>
+						<input class="new-inputs" type="text" value="" name="location" placeholder="Location" required>
+						<input class="new-inputs" type="text" value="" name="num" placeholder="Number" required>
+						<input class="new-inputs" type="text" value="" name="start_date" placeholder="Start Date" required>
+						<button id="Add-Cohorts" type="submit" name="">Add</button>
 					</form>
 				</div>
 
