@@ -15,7 +15,9 @@ functions.addCohort(obj, (err,res)=>{
 			if (err) {
 				console.log(err);
 			}else{
-				t.deepEqual(res, obj,'should return the inerted object')
+        var actual = res[0];
+        var expected =  {'location': 'Gaza', 'num': 2}
+				t.deepEqual(actual, expected,'should return the inerted object')
 				t.end();
 			}
 		})
