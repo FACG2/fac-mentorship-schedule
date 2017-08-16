@@ -42,3 +42,27 @@ functions.addCohort(obj, (err,res)=>{
 		}
 	})
 	});
+
+
+test('Add new mentors', (t) => {
+
+var obj = {cohort_id:6, mentor_user:"mahmoudalwadia", week_num:6};
+functions.addMenetor(obj, (err,res)=>{
+	if (err) {
+		console.log(err);
+	}else{
+
+		functions.testInsertMentor(obj,(err, res)=>{
+			if (err) {
+				console.log(err);
+			}else{
+        var actual = res[0];
+        var expected =  {cohort_id:6, mentor_user:"mahmoudalwadia", week_num:6}
+				t.deepEqual(actual, expected,'should return the inerted object')
+				t.end();
+			}
+			})
+
+		}
+	})
+	});

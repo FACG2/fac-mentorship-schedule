@@ -38,4 +38,46 @@ const getData = (cohort,cb) => {
  		}
  	})
  }
-module.exports = {getData ,addCohort, testInsert};
+
+
+const addMenetor = (obj,cb)=>{
+	dbConnection.query(`INSERT INTO mentors(githubuser) VALUES('${obj.mentor_user}')`,(err,res)=>{
+		if(err){
+ 			cohort_mentor(obj,cb);
+ 		}else{
+ 			cohort_mentor(obj,cb);
+ 		}
+	})
+}
+
+
+const cohort_mentor = (obj,cb)=>{
+	dbConnection.query(`INSERT INTO cohort_mentor(cohort_id,mentor_user,week_num) VALUES (${obj.cohort_id},'${obj.mentor_user}',${obj.week_num})`,(err,res)=>{
+		if(err){
+ 			cb(err)
+ 		}else{
+ 			cb(null, res.rows);
+ 		}
+	})
+}
+
+ const testInsertMentor = (obj,cb) =>{
+ 	dbConnection.query(`SELECT cohort_id,mentor_user,week_num WHERE cohort_id = ${obj.cohort_id} AND mentor_user='${obj.mentor_user}' AND week_num=${obj.week_num}`,(err, res)=>{
+ 		if(err){
+ 			cb(err)
+ 		}else{
+ 			cb(null, res.rows);
+ 		}
+ 	})
+ }
+var obj = {cohort_id:1, mentor_user:"mahmoudalwadia", week_num:7};
+addMenetor(obj,(err, res)=>{
+	if (err) {
+		console.log('mentor is already mentor on this week');
+	}else{
+		console.log("heeeee")
+	}
+
+})
+
+module.exports = {getData ,addCohort, testInsert, addMenetor, testInsertMentor};
