@@ -27,6 +27,26 @@ viewButton.onclick = (e) => {
 
   var url = `weeks?cohort=${selectedID}`;
 
+  updateTable(url);
+
+  addMentorButton.onclick=(e)=>{
+    e.preventDefault();
+    var week = weekNumber.options[weekNumber.selectedIndex].value;
+    var data =`cohort_id=${selectedID}&mentor_user=${mentorAccount.value}&week_num=${week}`
+    mentorAccount.value = '';
+    weekNumber.value = '1'
+    post('/add-mentor',data,(response)=>{
+      updateTable(url);
+    })
+  }
+}
+
+addButton.onclick=(e)=>{
+  tableDiv.style = 'display:none';
+  cohortForm.style = 'display:block';
+}
+
+function updateTable(url){
   get(url, (response) => {
     var weekNumbers = Object.keys(response);
     var rows = table.getElementsByTagName('tr');
@@ -39,32 +59,24 @@ viewButton.onclick = (e) => {
     tableDiv.style = 'display:block';
     cohortForm.style = 'display:none';
 
+    var weekTitles= ['Toolkit','Testing','APIs','Node.js 1/2','Node.js 2/2',
+    'PostgreSQL','Authentication','Express','self-selected project',
+    'self-selected project','self-selected project','self-selected project',
+    'self-selected project','self-selected project','self-selected project']
+
+
     weekNumbers.forEach((week, i) => {
-      console.log(week);
       var row = table.insertRow(i);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
       cell1.innerHTML = `week${week}`;
-      cell2.innerHTML = response[week].title;
-      cell3.innerHTML = response[week].mentors.toString();
+      cell2.innerHTML = weekTitles[i];
+      response[week].mentors.forEach((mentor)=>{
+      cell3.innerHTML+= `<a href=https://github.com/${mentor}> ${mentor} </a> <br>`
+      })
+
 
     });
   })
-
-  addMentorButton.onclick=(e)=>{
-    e.preventDefault();
-    var week = weekNumber.options[weekNumber.selectedIndex].value;
-    var data =`cohort_id=${selectedID}&mentor_user=${mentorAccount.value}&week_num=${week}`
-    mentorAccount.value = '';
-    weekNumber.value = '1'
-    post('/add-mentor',data,(response)=>{
-      console.log('hi');
-    })
-  }
-}
-
-addButton.onclick=(e)=>{
-  tableDiv.style = 'display:none';
-  cohortForm.style = 'display:block';
 }
