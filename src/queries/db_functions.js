@@ -35,7 +35,6 @@ const weeksMentors = (cohort,cb) =>{
     } else {
 
        res.map((object,i)=>{
-        console.log(weeks[object.num]);
         return weeks[object.num].push(object.githubuser)
       })
       cb(null,weeks);
