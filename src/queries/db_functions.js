@@ -71,7 +71,7 @@ const weeksMentors = (cohort,cb) =>{
     cohort ='fac';
     var c = cohort.toLowerCase().split('c[1]');
     console.log(c);
-  
+
 
    dbConnection.query(`SELECT id ,location ,num from cohorts where  id = '${cohort.id}' and location='${cohort.location}' and num ='${cohort.num}'` ,(err, res)=>{
      if(err){
