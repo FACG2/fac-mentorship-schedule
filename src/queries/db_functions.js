@@ -64,16 +64,9 @@ const weeksMentors = (cohort,cb) =>{
 
 
 
- const getCohort = (cohort,cb) => {
+ const getCohort = (cb) => {
 
-    var location ='';
-    var num ='';
-    cohort ='fac';
-    var c = cohort.toLowerCase().split('c[1]');
-    console.log(c);
-  
-
-   dbConnection.query(`SELECT id ,location ,num from cohorts where  id = '${cohort.id}' and location='${cohort.location}' and num ='${cohort.num}'` ,(err, res)=>{
+   dbConnection.query(`SELECT id ,location ,num from cohorts` ,(err, res)=>{
      if(err){
        cb(err)
      }else{
@@ -83,4 +76,25 @@ const weeksMentors = (cohort,cb) =>{
    })
  }
 
-module.exports = {getData ,addCohort, testInsert,weeksMentors,getCohort};
+ const getCohortNames = (cb)=>{
+   getCohort((err,res)=>{
+     if(err){
+       cb(err);
+     } else{
+       var arr=[];
+       res.map((object)=>{
+         if(object.location==='Gaza'){
+           arr.push('FACG'+object.num);
+         } else if(object.location==='Nazareth'){
+           arr.push('FACN'+object.num);
+         } else{
+           arr.push('FAC'+object.num);
+         }
+       })
+        cb(null,arr);
+     }
+   })
+ }
+
+module.exports = {getData ,addCohort, testInsert,
+  weeksMentors,getCohort,getCohortNames};
