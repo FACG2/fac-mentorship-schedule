@@ -103,6 +103,23 @@ function viewWeeksHandler(req,res) {
 
 }
 
+function viewCohortsHandler(req,res) {
+  var  result = dbFunctions.getCohortNames((err,ress) =>{
+    if (err) {
+      console.log(err);
+      res.writeHead(500, {
+        'Content-Type': 'text/html'
+      });
+      res.end('server error');
+    }else {
+
+      res.end(JSON.stringify(ress));
+    }
+  });
+
+
+}
+
 function noPageHandler(req, res) {
   res.writeHead(404, {
     'Content-Type': 'text/html'
@@ -114,5 +131,6 @@ module.exports = {
   noPageHandler,
   createCohortHandler,
   viewWeeksHandler,
-  createNewMentor
+  createNewMentor,
+  viewCohortsHandler
 }
