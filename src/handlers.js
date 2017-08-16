@@ -39,11 +39,9 @@ function createCohortHandler(req, res) {
   req.on('end', function() {
 
     var obj = querystring.parse(allData);
-    console.log(obj);
     var result = dbFunctions.addCohort(obj, (err, ress) => {
 
       if (err) {
-        console.log(err);
         res.writeHead(500, {
           'Content-Type': 'text/html'
         });
@@ -71,7 +69,6 @@ function viewWeeksHandler(req, res) {
   var result = dbFunctions.weeksMentors(obj.cohort, (err, ress) => {
 
     if (err) {
-      console.log(err);
       res.writeHead(500, {
         'Content-Type': 'text/html'
       });
@@ -87,7 +84,6 @@ function viewWeeksHandler(req, res) {
 function viewCohortsHandler(req, res) {
   var result = dbFunctions.getCohortNames((err, ress) => {
     if (err) {
-      console.log(err);
       res.writeHead(500, {
         'Content-Type': 'text/html'
       });
@@ -107,7 +103,6 @@ function createNewMentor(req, res) {
 
   req.on('end', function() {
     var obj = querystring.parse(allData);
-    console.log(obj);
     var result = dbFunctions.addMenetor(obj, (err, response) => {
       if (err) {
         res.writeHead(500, {
