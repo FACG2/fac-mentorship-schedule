@@ -30,36 +30,7 @@ Thus ,I should be able to :
 
 Here are the schema diagrams for the database:
 
-#### cohorts
-Column | Type | Modifiers
---- | --- | ---
-id | SERIAL| not null
-location | VARCHAR(10) | not null
-num | INTEGER |
-start_date|DATE |
-
-
-#### mentors
-
-Column | Type | Modifiers
---- | --- | ---
-githubuser | VARCHAR(20)|
-
-
-#### weeks
-Column | Type | Modifiers
---- | --- | ---
-num   | INTEGER| not null
-week_title  | VARCHAR(40)|
-
-#### cohort_mentor
-
-Column | Type | Modifiers
---- | --- | ---
-cohort_id   | INTEGER| not null
-mentor_user  | VARCHAR(20)|
-week_num  | INTEGER|
-
+![alt text](database.png "Logo Title Text 1")
 
 
 ### Day 1
