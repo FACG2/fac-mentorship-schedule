@@ -140,15 +140,15 @@ const getCohortNames = (cb) => {
 const addMenetor = (obj,cb)=>{
     dbConnection.query(`INSERT INTO mentors(githubuser) VALUES('${obj.mentor_user}')`,(err,res)=>{
         if(err){
-             cohort_mentor(obj,cb);
+             cohortMentor(obj,cb);
          }else{
-             cohort_mentor(obj,cb);
+             cohortMentor(obj,cb);
          }
     })
 }
 
 
-const cohort_mentor = (obj,cb)=>{
+const cohortMentor = (obj,cb)=>{
     dbConnection.query(`INSERT INTO cohort_mentor(cohort_id,mentor_user,week_num) VALUES (${obj.cohort_id},'${obj.mentor_user}',${obj.week_num})`,(err,res)=>{
         if(err){
              cb(err)
