@@ -92,7 +92,7 @@ week_num  | INTEGER|
   Navigate to http://localhost:4000/ in your browser
 
 
-[check the site]()
+[check the site](https://fac-mentorship.herokuapp.com/)
 
 
 > Done By : Abdallah,Salwa,Mahmoud,Hana
